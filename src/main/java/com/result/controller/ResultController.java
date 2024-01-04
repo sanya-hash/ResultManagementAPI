@@ -12,44 +12,42 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.result.entity.Student;
-import com.result.service.TeacherService;
+import com.result.entity.Result;
+import com.result.service.ResultService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/result")
-public class TeacherController {
-	
+public class ResultController {
 	@Autowired
-	private TeacherService teacherService;
+	private ResultService resultService;
 	
 	@PostMapping("")
-	public ResponseEntity<Student> addResult(@RequestBody Student student) {
-		student = teacherService.addResult(student);
-		return ResponseEntity.ok(student);
+	public ResponseEntity<Result> addResult(@RequestBody Result result) {
+		result = resultService.addResult(result);
+		return ResponseEntity.ok(result);
 		
 	}
 	
 	@GetMapping("")
-	public List<Student> getAllResults(){
-		return this.teacherService.getAllResult();
+	public List<Result> getAllResults(){
+		return this.resultService.getAllResult();
 	}
 	@GetMapping("/{rollnumber}")
-	public Student getResult(@PathVariable Long rollnumber) {
-		return this.teacherService.getResult(rollnumber); 
+	public Result getResult(@PathVariable Long rollnumber) {
+		return this.resultService.getResult(rollnumber); 
 	}
 	
 	@DeleteMapping("/{rollno}")
 	public void deleteResult(@PathVariable Long rollno) {
-		teacherService.deleteResult(rollno);
+		resultService.deleteResult(rollno);
 	}
 	
 	@PutMapping("")
-	public Student updateResult(@RequestBody Student student) throws Exception {
-	    return teacherService.updateResult(student);
+	public Result updateResult(@RequestBody Result result) throws Exception {
+	    return resultService.updateResult(result);
 	}
 	
 }
