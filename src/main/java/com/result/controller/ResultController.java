@@ -18,7 +18,7 @@ import com.result.entity.Result;
 import com.result.service.ResultService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping("/result")
 public class ResultController {
 	@Autowired
